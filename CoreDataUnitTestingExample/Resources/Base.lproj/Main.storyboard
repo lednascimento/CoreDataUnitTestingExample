@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CoreDataUnitTestingExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="w9E-KI-mWl">
+                                <rect key="frame" x="16" y="108" width="382" height="160"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UZT-87-WXh">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="2GA-ja-gK9"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hv0-DS-JPP">
+                                        <rect key="frame" x="0.0" y="56" width="382" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="RNy-af-Ufx"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgq-Ad-Zf9">
+                                        <rect key="frame" x="0.0" y="112" width="382" height="48"/>
+                                        <color key="backgroundColor" red="0.29411764709999999" green="0.0" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="E1n-wh-jgA"/>
+                                        </constraints>
+                                        <state key="normal" title="Save Place">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RLY-3l-WHN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Hv0-DS-JPP" secondAttribute="trailing" id="0G3-Vf-ted"/>
+                                    <constraint firstAttribute="trailing" secondItem="hgq-Ad-Zf9" secondAttribute="trailing" id="FZS-TF-pgL"/>
+                                    <constraint firstItem="Hv0-DS-JPP" firstAttribute="leading" secondItem="w9E-KI-mWl" secondAttribute="leading" id="PgT-Ej-Gdu"/>
+                                    <constraint firstItem="hgq-Ad-Zf9" firstAttribute="leading" secondItem="w9E-KI-mWl" secondAttribute="leading" id="UEP-jZ-HU2"/>
+                                    <constraint firstAttribute="trailing" secondItem="UZT-87-WXh" secondAttribute="trailing" id="Wf9-yL-foY"/>
+                                    <constraint firstItem="UZT-87-WXh" firstAttribute="leading" secondItem="w9E-KI-mWl" secondAttribute="leading" id="n5L-zo-Hf7"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="602-B6-BvX">
+                                <rect key="frame" x="16" y="284" width="382" height="564"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="VDI-HT-Frd"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="bGN-l6-glk"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="w9E-KI-mWl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="1Ca-sP-be8"/>
+                            <constraint firstItem="602-B6-BvX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="38p-5n-8dM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="602-B6-BvX" secondAttribute="trailing" constant="16" id="96y-HQ-u4j"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="w9E-KI-mWl" secondAttribute="trailing" constant="16" id="EyL-gB-SHd"/>
+                            <constraint firstItem="602-B6-BvX" firstAttribute="top" secondItem="w9E-KI-mWl" secondAttribute="bottom" constant="16" id="Hl3-16-92m"/>
+                            <constraint firstAttribute="bottom" secondItem="602-B6-BvX" secondAttribute="bottom" constant="48" id="ggD-s8-Tl5"/>
+                            <constraint firstItem="w9E-KI-mWl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="64" id="xy1-e4-raY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="cityField" destination="UZT-87-WXh" id="hl2-jG-ypi"/>
+                        <outlet property="countryField" destination="Hv0-DS-JPP" id="vLL-k9-zgZ"/>
+                        <outlet property="saveButton" destination="hgq-Ad-Zf9" id="x34-zN-9Mo"/>
+                        <outlet property="tableView" destination="602-B6-BvX" id="sKa-Jh-3rc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
