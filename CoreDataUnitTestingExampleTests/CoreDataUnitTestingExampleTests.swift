@@ -77,14 +77,51 @@ class CoreDataUnitTestingExampleTests: XCTestCase {
     }
 
     func testQuery() {
-        
+        guard let storageManager = self.storageManager else {
+            XCTFail()
+            return
+        }
+
+        let rowsBefore = storageManager.fetchAll()
+        XCTAssertEqual(rowsBefore.count, 0)
+
+        XCTAssertNotNil(storageManager.insertPlace(city: "London", country: "UK"))
+        XCTAssertNotNil(storageManager.insertPlace(city: "Paris", country: "France"))
+        XCTAssertNotNil(storageManager.insertPlace(city: "New York", country: "USA"))
+        XCTAssertNotNil(storageManager.insertPlace(city: "Chicago", country: "USA"))
+        XCTAssertNotNil(storageManager.insertPlace(city: "Tokyo", country: "Japan"))
+        XCTAssertNotNil(storageManager.insertPlace(city: "Ann Arbor", country: "USA"))
+        XCTAssertNotNil(storageManager.insertPlace(city: "Bristol", country: "UK"))
+        XCTAssertNotNil(storageManager.insertPlace(city: "Rome", country: "Italy"))
+        XCTAssertNotNil(storageManager.insertPlace(city: "London", country: "Canada"))
+        XCTAssertNotNil(storageManager.insertPlace(city: "Lisbon", country: "Spain"))
+        XCTAssertNotNil(storageManager.insertPlace(city: "Beijing", country: "China"))
+
+        storageManager.save()
+
+
+        var rows = storageManager.fetch(country: "USA")
+        XCTAssertEqual(rows.count, 3)
+
+        rows = storageManager.fetch(country: "Spain")
+        XCTAssertEqual(rows.count, 1)
+
+        rows = storageManager.fetch(city: "London")
+        XCTAssertEqual(rows.count, 2)       // test correct number of rows
+        XCTAssertEqual(rows[0].country, "Canada") // test country sort order
     }
 
     func testPerformanceExample() {
-        // This is an example of a performance test case.
+        guard let storageManager = self.storageManager else {
+            XCTFail()
+            return
+        }
+
         self.measure {
-            // Put the code you want to measure the time of here.
+            for i in 1...1000 {
+                XCTAssertNotNil(storageManager.insertPlace(city: "City \(i)", country: "Country \(i)"))
+            }
+            storageManager.save()
         }
     }
-
 }
